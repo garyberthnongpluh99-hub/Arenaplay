@@ -5,10 +5,12 @@ const { Server } = require('socket.io');
 const { initializeApp } = require('firebase/app');
 const { getFirestore, Timestamp } = require('firebase/firestore');
 
-const app = express();
-const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: '*', methods: ['GET', 'POST'] }
+  cors: {
+    origin: ['http://localhost:5173', 'https://arenaplay-frontend.vercel.app'],
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
 });
 
 app.get('/', (req, res) => res.send('<h1>ArenaPlay eSports Brain is ONLINE ⚡</h1>'));
